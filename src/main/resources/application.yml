@@ -1,0 +1,38 @@
+app:
+    config:
+        account-service:
+            base-uri: /v1/account
+            api:
+                create: /create
+                update: /update
+                fund: /fund
+                withdraw: /withdraw
+                user-accounts: /user/accounts
+                transfer: /transfer
+        user-service:
+            base-uri: /v1/user
+            api:
+                query: /query
+                register: /register
+        transaction-service:
+            base-uri: /v1/transactions
+            api:
+              user-transaction: /user/{userId}
+              add-transaction: /add
+
+server:
+    port: 8090
+spring:
+    application:
+        name: account-service-server
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        username: root
+        password: root
+        url: jdbc:mysql://localhost:3306/micro_db?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
+    jpa:
+        database-platform: org.hibernate.dialect.MySQL57Dialect
+        generate-ddl: true
+        hibernate:
+            ddl-auto: update
+        show-sql: true
